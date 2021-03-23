@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<title>Schaltjahrprüfer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script>
+"use strict";
+
+function fSchaltjahrprüfer() {
+
+var vStart
+var vStop
+var vAusgabe="";
+var vJahr
+var vJahre;
+
+
+vJahr = parseFloat(document.getElementById("idJahr").value);
+vJahre = parseFloat(document.getElementById("idJahre").value);
+vStop=parseFloat(vStop);
+vStop=vJahr-vJahre;
+
+vAusgabe = vAusgabe + "<table border=2>";
+vAusgabe = vAusgabe + "<tr><th>Jahr</th><th>Bemerkung<tr>";
+
+while (vJahr>=vStop) {
+
+  if (vJahr%4 == 0 && (vJahr%100 != 0 || vJahr%400 == 0)) {
+    vAusgabe = vAusgabe + "<tr><td style=background-color:pink>"+vJahr+"</td><td>Es ist ein Schaltjahr</td></tr>";
+  }
+  else {
+    vAusgabe = vAusgabe + "<tr><td>"+vJahr+"</td><td>Es ist kein Schaltjahr</td></tr></tr>";
+  }
+
+vJahr--
+
+}
+vAusgabe = vAusgabe + "</table>";
+
+document.getElementById("idAusgabe").innerHTML = vAusgabe;
+
+}
+
+</script>
+</head>
+
+<body>
+<h1>Schaltjahrprüfer</h1>
+
+Jahr:<input id="idJahr" type="text" value="2020" maxlength="50" size="3"></br></br>
+Jahre:<input id="idJahre" type="text" value="100" maxlength="50" size="3"></br></br>
+<button onClick="fSchaltjahrprüfer();">Auswerten</button>
+<div id="idAusgabe"></div>
+
+</body>
+</html>
